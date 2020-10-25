@@ -22,11 +22,75 @@ Now that you saw it in action, look into `index.js` to see how things are tied t
 Inspiration (as in all of the code that does the work) came from this post:
 https://sdk.gooddata.com/gooddata-ui/docs/4.1.1/ht_use_react_components_with_vanilla_js.html
 
+## What is the `SUPER` object?
+
+It's a wrapper that gives access to select React components plus a plethora of functions to render (and unrender) react components.
+
+### `components`
+
+#### `square`
+
+The smallest component, responsible of rendering a square in the Tic Tac Toe game.
+
+**Properties:**
+- value: a string with the value to be rendered in this squire
+- onClick: callback when this cell is clicked
+
+#### `game`
+
+The entire game component that manages state and renders all other components below it.
+
+### `render()`
+`SUPER.render(element, properties, targetNode[, callback]`
+
+Main function responsible of rendering React components.
+
+**Arguments:**
+- component: one of the components exposed in `SUPER.components`
+- props: properties for the component (see official docs on [React.createElement()](https://reactjs.org/docs/react-api.html#createelement))
+- targetNode: HTML node (usually obtained by `document.getElementBy...()`) where the component will be rendered
+- callback: callback that will be executed after the component is rendered or updated.
+
+For more information, look at the docs for [React.createElement()](https://reactjs.org/docs/react-api.html#createelement) and [ReactDOM.render()](https://reactjs.org/docs/react-dom.html#render)
+
+### `renderNode()`
+`SUPER.renderNode(targetNode)`
+
+Render react components directly from existing HTML. Node name will be matched against the components registered in `SUPER.components`, any attributes of the HTML element will be sent over to the `SUPER.render()` as `props`.
+
+**Arguments:**
+- targetNode: a HTML node (usually obtained by `document.getElementBy...()`)
+
+### `renderAllNodes()`
+`SUPER.renderNode(targetNodes)`
+
+Render react components directly from existing HTML. Node names will be matched against the components registered in `SUPER.components`, any attributes of the HTML element will be sent over to the `SUPER.render()` as `props`.
+
+**Arguments:**
+- targetNodes: list of HTML nodes (usually obtained by `document.getElementsBy...()`)
+
+### `unmountAll()`
+`SUPER.renderNode()`
+
+Unmount (remove any HTML and event handlers) all React components rendered with any of the methods above. This will reset the page to the original HTML content.
+
+### `unmount()`
+`SUPER.unmount(node)`
+
+Unmount (remove any HTML and event handlers) a specific React component rendered with any of the methods above. This will reset the node to the original HTML.
+
+**Arguments:**
+- node: Node (usually obtained by `document.getElementBy...()`) to reset
+
+---
+
 ## Are there other ways of doing this?
 
-There sure are, here's another example:
+There sure are, this is just one of many ways of doing this. Here's another example:
 
 https://muktak.com/render-react-components-using-vanilla-javascript-or-jquery/
+
+---
 
 ## Available Scripts
 
