@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom';
 import {Game, Square} from './game';
 
 // TODO comment me if you wanna do things by hand
-// ReactDOM.render(
-//     <Game />,
-//     document.getElementById('root')
-// );
+ReactDOM.render(
+    <Game />,
+    document.getElementById('root')
+);
 
 // ========================================
 
