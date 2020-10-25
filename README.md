@@ -14,7 +14,7 @@ This project is an example on how to make the [Intro to React](https://reactjs.o
 2. `$ npm install` to install all packaged
 3. `$ npm start` to start your web server. You shold now see the Tic Tac Toe app running.
 4. Modify `index.js`, comment lines 6-9, save and rerun the app (if you left `npm start` running, the app should hot-reload).
-5. You'll see an empty screen, open a console and type `SUPER.render(SUPER.widgets.game, document.getElementById('root'))`
+5. You'll see an empty screen, open a console and type `SUPER.render(SUPER.components.game, document.getElementById('root'))`
 6. The same app will now be fully functional!
 
 Now that you saw it in action, look into `index.js` to see how things are tied together.
@@ -46,10 +46,10 @@ The entire game component that manages state and renders all other components be
 Main function responsible of rendering React components.
 
 **Arguments:**
-- component: one of the components exposed in `SUPER.components`
-- props: properties for the component (see official docs on [React.createElement()](https://reactjs.org/docs/react-api.html#createelement))
-- targetNode: HTML node (usually obtained by `document.getElementBy...()`) where the component will be rendered
-- callback: callback that will be executed after the component is rendered or updated.
+- `component`: one of the components exposed in `SUPER.components`
+- `props`: properties for the component (see official docs on [React.createElement()](https://reactjs.org/docs/react-api.html#createelement))
+- `targetNode`: HTML node (usually obtained by `document.getElementBy...()`) where the component will be rendered
+- `callback`: callback that will be executed after the component is rendered or updated.
 
 For more information, look at the docs for [React.createElement()](https://reactjs.org/docs/react-api.html#createelement) and [ReactDOM.render()](https://reactjs.org/docs/react-dom.html#render)
 
@@ -59,7 +59,7 @@ For more information, look at the docs for [React.createElement()](https://react
 Render react components directly from existing HTML. Node name will be matched against the components registered in `SUPER.components`, any attributes of the HTML element will be sent over to the `SUPER.render()` as `props`.
 
 **Arguments:**
-- targetNode: a HTML node (usually obtained by `document.getElementBy...()`)
+- `targetNode`: a HTML node (usually obtained by `document.getElementBy...()`)
 
 ### `renderAllNodes()`
 `SUPER.renderNode(targetNodes)`
@@ -67,7 +67,7 @@ Render react components directly from existing HTML. Node name will be matched a
 Render react components directly from existing HTML. Node names will be matched against the components registered in `SUPER.components`, any attributes of the HTML element will be sent over to the `SUPER.render()` as `props`.
 
 **Arguments:**
-- targetNodes: list of HTML nodes (usually obtained by `document.getElementsBy...()`)
+- `targetNodes`: list of HTML nodes (usually obtained by `document.getElementsBy...()`)
 
 ### `unmountAll()`
 `SUPER.renderNode()`
@@ -80,7 +80,7 @@ Unmount (remove any HTML and event handlers) all React components rendered with 
 Unmount (remove any HTML and event handlers) a specific React component rendered with any of the methods above. This will reset the node to the original HTML.
 
 **Arguments:**
-- node: Node (usually obtained by `document.getElementBy...()`) to reset
+- `node`: Node (usually obtained by `document.getElementBy...()`) to reset
 
 ---
 
