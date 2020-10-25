@@ -44,8 +44,8 @@ let render = (component, props, targetNode, callback) => {
     return reactElement;
 };
 
-// reconstruct directly from HTML
-let hidrate = (targetNode) => {
+// render directly from HTML
+let renderNode = (targetNode) => {
     const elementName = targetNode.tagName.toLowerCase();
     let props = {};
     const attributes = targetNode.attributes;
@@ -55,6 +55,13 @@ let hidrate = (targetNode) => {
         props[attribute.name] = attribute.value;
     }
     render(SUPER.widgets[elementName], props, targetNode, null);
+}
+
+// render several nodes at once
+let renderAllNodes = (targetNodes) => {
+    for (var i = 0; i < targetNodes.length; i++) {
+        renderNode(targetNodes[i]);
+    }
 }
 
 // detach all 
@@ -76,7 +83,8 @@ let unmount = (node) => {
 // magic 🧙‍♀️
 const SUPER = {
     render: render,
-    hidrate: hidrate,
+    renderNode: renderNode,
+    renderAllNodes: renderAllNodes,
     unmountAll: unmountAll,
     unmount: unmount,
     widgets: {

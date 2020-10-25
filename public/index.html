@@ -28,7 +28,30 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <h1>#root</h1>
+    <pre>&lt;div id=&quot;root&quot;&gt;&lt;/div&gt;</pre>
+    <p>A Tic Tac Tow board should appear down here automatically.</p>
     <div id="root"></div>
+
+    <hr />
+
+    <h1>&lt;square ...&gt;</h1>
+    <p>There's a single Tic Tac Toe square here:</p>
+    <pre>&lt;Square value=&quot;X&quot;&gt;&lt;/Square&gt;</pre>
+    <p>... it will only show up when manually invoking the render function. Try typing this in the browser console:</p>
+    <pre>SUPER.renderNode(document.getElementsByTagName('square')[0])</pre>
+    <Square value="X"></Square>
+
+    <hr />
+
+    <Square value="I"></Square>
+    <Square value="T"></Square>
+    <Square value=" "></Square>
+    <Square value="W"></Square>
+    <Square value="O"></Square>
+    <Square value="R"></Square>
+    <Square value="K"></Square>
+    <Square value="S"></Square>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -39,5 +62,11 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script>
+      // TODO if you want to render on load
+      // window.addEventListener('load', (event) => {
+      //     SUPER.render(SUPER.widgets.game, {}, document.getElementById('root'));
+      // });
+    </script>
   </body>
 </html>

@@ -2,6 +2,15 @@ body {
     font: 14px "Century Gothic", Futura, sans-serif;
     margin: 20px;
   }
+
+  pre {
+    background: #eee;
+    padding: 1em;
+  }
+
+  hr {
+    margin: 8em 0; 
+  }
   
   ol, ul {
     padding-left: 30px;
