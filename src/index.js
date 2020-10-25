@@ -54,7 +54,7 @@ let renderNode = (targetNode) => {
         attribute = attributes[i];
         props[attribute.name] = attribute.value;
     }
-    render(SUPER.widgets[elementName], props, targetNode, null);
+    render(SUPER.components[elementName], props, targetNode, null);
 }
 
 // render several nodes at once
@@ -87,7 +87,7 @@ const SUPER = {
     renderAllNodes: renderAllNodes,
     unmountAll: unmountAll,
     unmount: unmount,
-    widgets: {
+    components: {
         square: Square,
         game: Game
     },
