@@ -27,7 +27,7 @@ window.Square = Square;
 // $ ReactDOM.render(el, #node)
 // ... we might be better of with a wrapper, huh?
 
-// slightly better solution, create a global variable with all widgets and necessary wrappers
+// slightly better solution, create a global variable with all components and necessary wrappers
 // idea from: https://sdk.gooddata.com/gooddata-ui/docs/4.1.1/ht_use_react_components_with_vanilla_js.html
 
 
