@@ -30,8 +30,11 @@
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <h1>#root</h1>
     <pre>&lt;div id=&quot;root&quot;&gt;&lt;/div&gt;</pre>
-    <p>A Tic Tac Tow board should appear down here automatically.</p>
+    <p>A Tic Tac Toc board should appear down here automatically.</p>
     <div id="root"></div>
+    <div id="remote"></div>
+    <div id="button"></div>
+    <div id="label"></div>
 
     <hr />
 
@@ -40,7 +43,7 @@
     <pre>&lt;Square value=&quot;X&quot;&gt;&lt;/Square&gt;</pre>
     <p>... it will only show up when manually invoking the render function. Try typing this in the browser console:</p>
     <pre>SUPER.renderNode(document.getElementsByTagName('square')[0])</pre>
-    <Square value="X"></Square>
+    <Square value="O"></Square>
 
     <hr />
 
@@ -65,7 +68,7 @@
     <script>
       // TODO if you want to render on load
       // window.addEventListener('load', (event) => {
-      //     SUPER.render(SUPER.widgets.game, {}, document.getElementById('root'));
+      //     SUPER.render(SUPER.components.game, {}, document.getElementById('root'));
       // });
     </script>
   </body>

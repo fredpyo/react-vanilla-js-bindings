@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Game, Square} from './game';
+import {RemoteRequest, Game, Square, IncrementButton, IncrementLabel} from './game';
 
 // TODO comment me if you wanna do things by hand
 ReactDOM.render(
@@ -52,7 +52,11 @@ let renderNode = (targetNode) => {
     var attribute;
     for (var i = 0; i < attributes.length; i++) {
         attribute = attributes[i];
-        props[attribute.name] = attribute.value;
+        try {
+            props[attribute.name] = eval(attribute.value);
+        } catch {
+            props[attribute.name] = attribute.value;
+        }
     }
     render(SUPER.components[elementName], props, targetNode, null);
 }
@@ -89,7 +93,10 @@ const SUPER = {
     unmount: unmount,
     components: {
         square: Square,
-        game: Game
+        game: Game,
+        remote: RemoteRequest,
+        incrementButton: IncrementButton,
+        incrementLabel: IncrementLabel
     },
 };
 window.SUPER = SUPER;

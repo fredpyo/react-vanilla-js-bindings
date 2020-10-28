@@ -1,3 +1,4 @@
+import PubSub from 'pubsub-js';
 import React from 'react';
 import './index.css';
 
@@ -142,4 +143,101 @@ function calculateWinner(squares) {
       }
     }
     return null;
+}
+
+
+export class RemoteRequest extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            error: null,
+            isLoaded: false,
+            items: []
+        };
+    }
+
+    componentDidMount() {
+        fetch("https://jsonplaceholder.typicode.com/posts")
+          .then(res => res.json())
+          .then(
+            (result) => {
+              this.setState({
+                isLoaded: true,
+                items: result
+              });
+            },
+            // Note: it's important to handle errors here
+            // instead of a catch() block so that we don't swallow
+            // exceptions from actual bugs in components.
+            (error) => {
+              this.setState({
+                isLoaded: true,
+                error
+              });
+            }
+          )
+      }
+
+    render() {
+        const { error, isLoaded, items } = this.state;
+        if (error) {
+        return <div>Error: {error.message}</div>;
+        } else if (!isLoaded) {
+        return <div>Loading...</div>;
+        } else {
+            return (
+                <ul>
+                {items.map(item => (
+                    <li key={item.id}>
+                        <strong>{item.title}</strong><br />{item.body}
+                    </li>
+                ))}
+                </ul>
+            );
+        }
+    }
+} 
+
+export class IncrementButton extends React.Component {
+    plusOne() {
+        PubSub.publish('PLUS ONE', 1);
+    }
+
+    render() {
+        return (
+            <button onClick={() => this.plusOne()}>
+            +1
+            </button>
+        );
+    }
+}
+
+export class IncrementLabel extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            counter: 0
+        };
+    }
+
+    componentDidMount() {
+        this.token = PubSub.subscribe('PLUS ONE', (msg, data) => this.onPlusOneEvent(msg, data));
+    }
+
+    componentWillUnmount() {
+        PubSub.unsubscribe(this.token);
+    }
+
+    onPlusOneEvent(msg, data) {
+        console.log(msg, data);
+        this.setState({
+            counter: this.state.counter + 1
+        });
+    }
+
+    render() {
+        return (
+            <p>Button clicked {this.state.counter} time(s)</p>
+        );
+    }
 }
